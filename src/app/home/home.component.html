@@ -1,0 +1,13 @@
+<div class="searchContainer">
+  <div class="search">
+    <label for="search"> Search Stories </label>
+    <input [(ngModel)]="search" id="search" type="text" />
+    <button class="button" (click)="onSearch()">Search</button>
+  </div>
+  <button (click)="onReset()">Reset</button>
+</div>
+<ul class="storyList">
+  <li *ngFor="let story of stories">
+    <app-hacker-news-card [story]="story"></app-hacker-news-card>
+  </li>
+</ul>

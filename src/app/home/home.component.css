@@ -1,0 +1,10 @@
+.storyList {
+  list-style-type: none;
+}
+.search {
+  margin: 0 auto;
+}
+.searchContainer {
+  margin: 0 auto;
+  width: 400px;
+}

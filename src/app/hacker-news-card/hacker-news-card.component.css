@@ -1,0 +1,19 @@
+.newsContainer {
+  margin: 0 auto;
+  margin-bottom: 15px;
+  width: 400px;
+  height: 100px;
+  background: #f9f9f9;
+  border-radius: 25px;
+}
+
+.time {
+  float: left;
+}
+.by {
+  float: right;
+}
+.title {
+  text-align: center;
+  font-weight: bold;
+}
