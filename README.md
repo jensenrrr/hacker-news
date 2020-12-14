@@ -1,3 +1,4 @@
+
 # Nextech HackerNews App
 
 ## Goal
@@ -38,3 +39,21 @@ API:
 
 - api/loadNewStories?{storiesToLoad}: returns a subset of the stories object from index {storiesToLoad} to index {storiesToLoad + x} (x is however many stories we want to return.
 - api/searchNewStories?{searchTerm}: returns all stories that have a title or by attribute that contain the string {searchTerm}.
+
+## Frontend Development
+
+I had worked in AngularJS both in college on a team project and in Infinite Energy's customer management site, but this is the first Angular application I had made from scratch by myself.
+
+I primarily used the [Angular Docs ](https://angular.io/docs) to learn the basics of how Angular works and what syntax I needed. Having a considerable amount of experience with React, I found that knowledge translated into Angular fairly well.
+
+The biggest time sink I ran into was an issue with SSL when making calls to the backend. I eventually found out I can run "ng serve -ssl true" and ran into chrome telling me the application was unsafe. I tried to quickly fix that by generating an SSL and installing it on my computer, but that didn't work and I left it as is since it was working for the purposes of this assessment.
+
+### Final Design Review
+
+This final design largely follows my initial design, except that I was too lazy to put the search-bar in it's on component, which I would've done if I was working on a professional or permanent application.
+
+Outside of the search-bar, however, I realized that the home component and NewsService had too much responsibility. I think that the HTTP calls should be moved into their own service and NewsService should take over handling the story data, leaving the home component with only the duty of displaying data from NewsService to the user and handling user interaction.
+
+The other problem with the final design is that unit tests have not been added yet (other than the Angular default tests).
+
+The next two steps in development would be to refactor the search Component, NewsService, and home component and then to add unit tests.
