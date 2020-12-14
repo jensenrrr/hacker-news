@@ -1,6 +1,13 @@
 
 # Nextech HackerNews App
 
+## Getting Started
+
+Clone the repository, and navigate to it in a command line tool.
+Run "npm i" to install node packages.
+Run "npm run start" to start the application.
+Open "https://localhost:4200/", click advanced on the page and then proceed. 
+
 ## Goal
 
 Angular and .NET Core application that displays new stories from the Hacker News API and allow users to search those stories.
