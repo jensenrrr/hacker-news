@@ -3,6 +3,11 @@ import { FormBuilder } from '@angular/forms';
 import HackerNewsStory from '../Interfaces/HackerNewsStory';
 import { NewsService } from '../news.service';
 
+const batchSize = 20;
+
+const scrolledToBottom = () =>
+  window.innerHeight + window.scrollY >= document.body.offsetHeight;
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -17,31 +22,28 @@ export class HomeComponent implements OnInit {
   loading = false;
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(): void {
-    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+    if (scrolledToBottom()) {
       if (!this.searched && !this.loading) {
         this.loading = true;
         this.newsService
           .loadNewsStories(this.loadedStories)
           .subscribe((data: any) => {
-            console.log('data from request:', data);
             this.stories.push(...data);
-            this.loadedStories += 20;
+            this.loadedStories += batchSize;
             this.loading = false;
-            console.log(this.stories);
           });
       }
     }
   }
+
   ngOnInit(): void {
     this.loading = true;
     this.newsService
       .loadNewsStories(this.loadedStories)
       .subscribe((data: any) => {
-        console.log('data from request:', data);
         this.stories.push(...data);
-        this.loadedStories += 20;
+        this.loadedStories += batchSize;
         this.loading = false;
-        console.log(this.stories);
       });
   }
   onReset() {
@@ -50,20 +52,16 @@ export class HomeComponent implements OnInit {
     this.newsService
       .loadNewsStories(this.loadedStories)
       .subscribe((data: any) => {
-        console.log('data from request:', data);
         this.stories = data;
-        this.loadedStories += 20;
+        this.loadedStories += batchSize;
         this.loading = false;
-        console.log(this.stories);
       });
   }
   onSearch() {
     this.newsService.searchStories(this.search).subscribe((data: any) => {
-      console.log('data from search:', data);
       this.stories = data;
-      this.loadedStories += 20;
+      this.loadedStories += batchSize;
       this.loading = false;
-      console.log(this.stories);
     });
   }
 }

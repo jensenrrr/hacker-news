@@ -16,21 +16,3 @@ export class HackerNewsCardComponent {
     descendants: 2,
   };
 }
-/*
-export class HackerNewsCardComponent implements OnInit {
-  constructor() {
-    @Input() story: HackerNewsStory;
-
-  }
-  @Input() story: HackerNewsStory;
-  story: HackerNewsStory = {
-    by: 'Jensen Rice',
-    title: 'No data was passed to this component',
-    url: 'url',
-    time: 5,
-    score: 6,
-    descendants: 2,
-  };
-  ngOnInit(): void {}
-}
-*/
