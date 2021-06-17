@@ -8,9 +8,9 @@ import HackerNewsStory from './Interfaces/HackerNewsStory';
   providedIn: 'root',
 })
 export class NewsService {
-  loadNewsStories(storiesToLoad: number) {
+  loadNewsStories(storiesToLoad: number, storyCount: number) {
     return this.http.get<HackerNewsStory[]>(
-      `https://localhost:5001/api/HackerNews/loadNewStories/${storiesToLoad}`
+      `https://localhost:5001/api/HackerNews/loadNewStories/${storiesToLoad}/${storyCount}`
     );
   }
   searchStories(searchTerm: string) {

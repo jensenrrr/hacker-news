@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
       if (!this.searched && !this.loading) {
         this.loading = true;
         this.newsService
-          .loadNewsStories(this.loadedStories)
+          .loadNewsStories(this.loadedStories, batchSize)
           .subscribe((data: any) => {
             this.stories.push(...data);
             this.loadedStories += batchSize;
@@ -39,24 +39,26 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.loading = true;
     this.newsService
-      .loadNewsStories(this.loadedStories)
+      .loadNewsStories(this.loadedStories, batchSize)
       .subscribe((data: any) => {
         this.stories.push(...data);
         this.loadedStories += batchSize;
         this.loading = false;
       });
   }
+
   onReset() {
     this.loading = true;
     this.loadedStories = 0;
     this.newsService
-      .loadNewsStories(this.loadedStories)
+      .loadNewsStories(this.loadedStories, batchSize)
       .subscribe((data: any) => {
         this.stories = data;
         this.loadedStories += batchSize;
         this.loading = false;
       });
   }
+
   onSearch() {
     this.newsService.searchStories(this.search).subscribe((data: any) => {
       this.stories = data;
